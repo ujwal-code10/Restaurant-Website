@@ -52,13 +52,15 @@ const Home = () => {
             src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1600&q=80"
             alt="Elegant Italian restaurant interior with warm lighting and wooden tables"
             className="w-full h-full object-cover"
+            loading="eager"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           className="relative text-center text-white dark:text-white px-4"
         >
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-white dark:text-white">

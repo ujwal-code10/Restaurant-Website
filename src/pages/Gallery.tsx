@@ -90,13 +90,15 @@ const Gallery = () => {
               src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80"
               alt="Elegant Italian restaurant gallery with art and decor"
               className="w-full h-full object-cover"
+              loading="eager"
+              fetchPriority="high"
             />
             <div className="absolute inset-0 bg-black/60"></div>
           </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             className="relative text-center px-4 text-white dark:text-white"
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white dark:text-white">Our Gallery</h1>
@@ -140,23 +142,25 @@ const Gallery = () => {
             </div>
 
             {/* Gallery Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredImages.map((image) => (
                 <motion.div
                   key={image.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
-                  className="relative group cursor-pointer"
+                  transition={{ duration: 0.3 }}
+                  className="relative aspect-square overflow-hidden rounded-lg cursor-pointer group"
                   onClick={() => setSelectedImage(image)}
                 >
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-64 object-cover rounded-lg shadow-lg"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
                   />
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <p className="text-white text-center px-4">{image.description}</p>
                   </div>
                 </motion.div>
