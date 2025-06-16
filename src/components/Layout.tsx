@@ -91,14 +91,19 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               >
                 Book a Table
               </Link>
+            </nav>
+
+            {/* Right Side Items */}
+            <div className="flex items-center gap-4">
+              {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
-                className="text-text-body-light dark:text-text-body-dark hover:text-accent dark:hover:text-accent transition-colors"
+                className="inline-flex items-center justify-center p-2 rounded-full text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                 aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
               >
                 {isDarkMode ? (
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -112,7 +117,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   </svg>
                 ) : (
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -126,49 +131,50 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   </svg>
                 )}
               </button>
-            </nav>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden text-text-body-light dark:text-text-body-dark hover:text-accent dark:hover:text-accent transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+              {/* Mobile Menu Button */}
+              <button
+                className="md:hidden inline-flex items-center justify-center p-2 rounded-full text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label="Toggle menu"
+                aria-expanded={isMobileMenuOpen}
               >
-                {isMobileMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  {isMobileMenuOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  )}
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden bg-base-light dark:bg-base-dark"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden fixed top-20 left-0 right-0 bg-base-light dark:bg-base-dark shadow-lg z-40 overflow-hidden"
             >
               <div className="container mx-auto px-4 py-4">
                 <nav className="flex flex-col space-y-4">
@@ -176,7 +182,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     <Link
                       key={link.to}
                       to={link.to}
-                      className={`text-text-body-light dark:text-text-body-dark hover:text-accent dark:hover:text-accent transition-colors ${
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`text-text-body-light dark:text-text-body-dark hover:text-accent dark:hover:text-accent transition-colors py-2 ${
                         location.pathname === link.to ? 'text-accent dark:text-accent' : ''
                       }`}
                     >
@@ -185,10 +192,50 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   ))}
                   <Link
                     to="/reservation"
+                    onClick={() => setIsMobileMenuOpen(false)}
                     className="btn btn-primary w-full text-center"
                   >
                     Book a Table
                   </Link>
+                  <button
+                    onClick={() => {
+                      toggleTheme();
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="flex items-center justify-center w-full py-3 px-4 text-text-body-light dark:text-text-body-dark hover:text-accent dark:hover:text-accent transition-colors border-t border-ui-border-light dark:border-ui-border-dark mt-2"
+                    aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+                  >
+                    {isDarkMode ? (
+                      <svg
+                        className="w-5 h-5 sm:w-6 sm:h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        className="w-5 h-5 sm:w-6 sm:h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                        />
+                      </svg>
+                    )}
+                    <span className="ml-2 text-sm sm:text-base">{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
+                  </button>
                 </nav>
               </div>
             </motion.div>
