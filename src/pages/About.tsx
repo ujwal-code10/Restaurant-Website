@@ -44,7 +44,7 @@ const teamMembers = [
   {
     name: 'Luca Romano',
     role: 'Pastry Chef',
-    image: 'https://images.pexels.com/photos/169193/breakfast-coffee-croissant-rolls-169193.jpeg',
+    image: 'https://images.pexels.com/photos/6287236/pexels-photo-6287236.jpeg',
     bio: 'Our dessert expert, Luca creates the perfect sweet ending to every meal with his innovative takes on classic Italian desserts.',
   },
   {
@@ -110,6 +110,8 @@ const About = () => {
                 src="https://images.pexels.com/photos/6267/menu-restaurant-vintage-table.jpg"
                 alt="Restaurant interior with elegant table setting"
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
           </div>
@@ -178,6 +180,8 @@ const About = () => {
               src="https://images.pexels.com/photos/6267/menu-restaurant-vintage-table.jpg"
               alt="Elegant restaurant interior with warm lighting"
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -216,6 +220,8 @@ const About = () => {
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-heading">

@@ -188,6 +188,8 @@ const Gallery = () => {
                       src={selectedImage.src}
                       alt={selectedImage.alt}
                       className="w-full h-auto rounded-lg"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <button
                       className="absolute top-4 right-4 text-white hover:text-accent transition-colors"

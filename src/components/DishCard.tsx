@@ -17,6 +17,8 @@ export default function DishCard({ image, name, description, price }: DishCardPr
         src={image}
         alt={`Image of ${name}`}
         className="w-full h-[180px] object-cover rounded-t-lg block"
+        loading="lazy"
+        decoding="async"
       />
       <div className="p-4 sm:p-5 flex-grow">
         <div className="flex justify-between items-start mb-2">

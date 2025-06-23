@@ -90,6 +90,8 @@ export default function Contact() {
                   src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=800&q=80"
                   alt="Elegant Italian restaurant exterior with outdoor seating and warm lighting"
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
                   <div className="text-white dark:text-white">

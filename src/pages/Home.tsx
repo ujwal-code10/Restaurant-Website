@@ -54,6 +54,7 @@ const Home = () => {
             className="w-full h-full object-cover"
             loading="eager"
             fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
