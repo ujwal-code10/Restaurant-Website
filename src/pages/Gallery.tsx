@@ -14,21 +14,21 @@ const galleryImages: GalleryImage[] = [
   // Food images from Home and Menu pages
   {
     id: 1,
-    src: 'https://images.pexels.com/photos/6287525/pexels-photo-6287525.jpeg',
+    src: 'https://images.pexels.com/photos/6287525/pexels-photo-6287525.webp',
     alt: 'Truffle Mushroom Risotto',
     category: 'food',
     description: 'Our signature Truffle Mushroom Risotto'
   },
   {
     id: 2,
-    src: 'https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg',
+    src: 'https://images.pexels.com/photos/461382/pexels-photo-461382.webp',
     alt: 'Osso Buco alla Milanese',
     category: 'food',
     description: 'Classic Osso Buco with saffron risotto'
   },
   {
     id: 3,
-    src: 'https://images.pexels.com/photos/2144112/pexels-photo-2144112.jpeg',
+    src: 'https://images.pexels.com/photos/2144112/pexels-photo-2144112.webp',
     alt: 'Tiramisu Classico',
     category: 'food',
     description: 'Traditional Italian Tiramisu'
@@ -43,7 +43,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 5,
-    src: 'https://images.pexels.com/photos/6267/menu-restaurant-vintage-table.jpg',
+    src: 'https://images.pexels.com/photos/6267/menu-restaurant-vintage-table.webp',
     alt: 'Restaurant Table Setting',
     category: 'interior',
     description: 'Classic Italian table setting'
